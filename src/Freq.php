@@ -406,7 +406,7 @@ class Freq {
 	 * given offset
 	 *
 	 * @param int $offset
-	 * @return int
+	 * @return int FIXME type
 	 * @throws Exception
 	 */
 	public function previousOccurrence(int $offset): bool|int {
@@ -434,8 +434,7 @@ class Freq {
 	/**
 	 * Returns the next occurrence of this rule after the given offset
 	 *
-	 * @param int $offset
-	 * @return int
+	 * @return int FIXME type
 	 * @throws Exception
 	 */
 	public function nextOccurrence(int $offset): bool|int {
@@ -448,7 +447,7 @@ class Freq {
 	/**
 	 * Finds the first occurrence of the rule.
 	 *
-	 * @return int timestamp
+	 * @return int timestamp FIXME type
 	 * @throws Exception
 	 */
 	public function firstOccurrence(): bool|int {

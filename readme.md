@@ -6,7 +6,7 @@
 
 # PHP iCal Parser
 
-Internet Calendaring Parser [rfc2445](https://www.ietf.org/rfc/rfc2445.txt) or iCal parser is simple PHP class for parsing format into array.
+Internet Calendaring Parser [rfc2445](https://www.ietf.org/rfc/rfc2445.txt) or iCal parser is a simple PHP class for parsing format into an array.
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/ozzyczech)
 
@@ -26,20 +26,21 @@ use om\IcalParser;
 require_once '../vendor/autoload.php';
 
 $cal = new IcalParser();
-$results = $cal->parseFile(
+$cal->parseFile(
 	'https://www.google.com/calendar/ical/cs.czech%23holiday%40group.v.calendar.google.com/public/basic.ics'
 );
 
 foreach ($cal->getEvents()->sorted() as $event) {
 	printf('%s - %s' . PHP_EOL, $event['DTSTART']->format('j.n.Y'), $event['SUMMARY']);
-	
+
 }
 ```
 
-Each property of each event is available using the property name (in capital letters) as a key. 
+Each property of each event is available using the property name (in capital letters) as a key.
 There are some special cases:
 
 - multiple attendees with individual parameters: use `ATTENDEES` as key to get all attendees in the following scheme:
+
 ```php
 [
 	[
@@ -56,6 +57,7 @@ There are some special cases:
 	]
 ]
 ```
+
 - organizer's name: the *CN* parameter of the organizer property can be retrieved using the key `ORGANIZER-CN`
 
 You can run example with [PHP Built-in web server](https://www.php.net/manual/en/features.commandline.webserver.php) as follow:

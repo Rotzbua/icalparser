@@ -1,3 +1,3 @@
 # iCal source
 
-- https://github.com/mozilla-comm/ical.js/tree/master/samples
+- https://github.com/kewisch/ical.js/tree/main/samples

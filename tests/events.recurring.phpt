@@ -31,11 +31,11 @@ test('Recurring instances finite', function () {
 
 test('Recurring instance check', function () {
 	$cal = new IcalParser();
-	$results = $cal->parseFile(__DIR__ . '/cal/recur_instances.ics');
+	$cal->parseFile(__DIR__ . '/cal/recur_instances.ics');
 	$events = $cal->getEvents()->sorted();
 
 	$recurrences = [];
-	foreach ($events as $i => $event) {
+	foreach ($events as $event) {
 		$recurrences[] = $event['DTSTART'];
 	}
 
@@ -166,21 +166,21 @@ test('Recuring instances with modifications and interval', function () {
 
 });
 
-test('', function () {
+test('Unnamed 1', function () {
 	$cal = new IcalParser();
 // There is still an issue that needs to be resolved when modifications are made to the initial event that is the
 // base of the recurrences.  The below ICS file has a great edge case example: one event, no recurrences in the
 // recurring ruleset, and a modification to the initial event.
-	$results = $cal->parseFile(__DIR__ . '/cal/recur_instances_with_modifications_to_first_day.ics');
+	$cal->parseFile(__DIR__ . '/cal/recur_instances_with_modifications_to_first_day.ics');
 	$events = $cal->getEvents()->sorted()->getArrayCopy();
 	Assert::true(empty($events[0]['RECURRENCES'])); // edited event
 	Assert::true(empty($events[1]['RECURRENCES'])); // recurring event base with no recurrences
 	Assert::equal(1, count($events));
 });
 
-test('', function () {
+test('Unnamed 2', function () {
 	$cal = new IcalParser();
-	$results = $cal->parseFile(__DIR__ . '/cal/daily_recur.ics');
+	$cal->parseFile(__DIR__ . '/cal/daily_recur.ics');
 	$events = $cal->getEvents()->sorted()->getArrayCopy();
 	$period = new DatePeriod(new DateTime('20120801T050000'), new DateInterval('P1D'), new DateTime('20150801T050000'));
 	foreach ($period as $i => $day) {
@@ -188,9 +188,9 @@ test('', function () {
 	}
 });
 
-test('', function () {
+test('Unnamed 3', function () {
 	$cal = new IcalParser();
-	$results = $cal->parseFile(__DIR__ . '/cal/daily_recur2.ics');
+	$cal->parseFile(__DIR__ . '/cal/daily_recur2.ics');
 	$events = $cal->getEvents()->sorted()->getArrayCopy();
 
 	Assert::equal(4, count($events));
@@ -200,7 +200,7 @@ test('', function () {
 	Assert::equal('11.9.2017 00:00:00', $events[3]['DTSTART']->format('j.n.Y H:i:s'));
 });
 
-test('', function () {
+test('Issue 38', function () {
 //https://github.com/OzzyCzech/icalparser/issues/38
 	$cal = new IcalParser();
 	$cal->parseFile(__DIR__ . '/cal/38_weekly_recurring_event_missing_day.ics');

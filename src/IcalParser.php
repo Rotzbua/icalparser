@@ -165,11 +165,10 @@ class IcalParser {
 	}
 
 	/**
-	 * @param $event
-	 * @return array
+	 * @param mixed $event TODO fix type
 	 * @throws Exception
 	 */
-	public function parseRecurrences($event): array {
+	public function parseRecurrences(mixed $event): array {
 		$recurring = new Recurrence($event['RRULE']);
 		$exclusions = [];
 		$additions = [];
@@ -252,7 +251,8 @@ class IcalParser {
 		return $recurrences;
 	}
 
-	private function parseRow($row): array {
+	// TODO fix mixed type
+	private function parseRow(mixed $row): array {
 		preg_match('#^([\w-]+);?([\w-]+="[^"]*"|.*?):(.*)$#i', $row, $matches);
 
 		$key = false;
@@ -361,7 +361,6 @@ class IcalParser {
 	/**
 	 * Process timezone and return correct one...
 	 *
-	 * @param string $zone
 	 * @return mixed|null
 	 */
 	private function toTimezone(string $zone): mixed {
@@ -372,11 +371,8 @@ class IcalParser {
 		return (['ATTACH' => 'ATTACHMENTS', 'EXDATE' => 'EXDATES', 'RDATE' => 'RDATES', 'ATTENDEE' => 'ATTENDEES'])[$key] ?? null;
 	}
 
-	/**
-	 * @param $key
-	 * @return string|null
-	 */
-	public function isMultipleKeyWithCommaSeparation($key): ?string {
+	// TODO fix mixed type
+	public function isMultipleKeyWithCommaSeparation(mixed $key): ?string {
 		return (['X-CATEGORIES' => 'X-CATEGORIES', 'CATEGORIES' => 'CATEGORIES'])[$key] ?? null;
 	}
 

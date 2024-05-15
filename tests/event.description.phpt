@@ -15,7 +15,7 @@ date_default_timezone_set('Europe/Prague');
 
 test('Blank description test', function () {
 	$cal = new IcalParser();
-	$results = $cal->parseFile(__DIR__ . '/cal/blank_description.ics');
+	$cal->parseFile(__DIR__ . '/cal/blank_description.ics');
 	$first = $cal->getEvents()->getIterator()->current();
 
 	Assert::hasKey('DESCRIPTION', $first);
