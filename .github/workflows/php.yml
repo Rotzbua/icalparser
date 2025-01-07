@@ -38,3 +38,7 @@ jobs:
 
       - name: Run test suite
         run: composer run-script test
+
+      - name: Run lint check
+        if: "${{ matrix.experimental == false }}"
+        run: composer run-script lint

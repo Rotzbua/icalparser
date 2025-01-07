@@ -150,8 +150,8 @@ test('Recuring instances with modifications and interval', function () {
 	}
 
 	usort(
-		$trueEvents,
-		static function ($a, $b): int {
+	    $trueEvents,
+	    static function ($a, $b): int {
 			return ($a['DTSTART'] > $b['DTSTART']) ? 1 : -1;
 		}
 	);
