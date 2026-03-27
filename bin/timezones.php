@@ -4,11 +4,11 @@
  * This file generates a map from windows timezones to tz database timezones
  *
  * @author   Clement Wong <cw@clement.hk>
- * @license  http://www.opensource.org/licenses/mit-license.php  MIT License
+ * @license  https://opensource.org/license/mit MIT License
  */
 $windows_timezones = [];
 $windowstimezonexml = new DOMDocument();
-$windowstimezonexml->load('https://raw.githubusercontent.com/unicode-org/cldr/master/common/supplemental/windowsZones.xml');
+$windowstimezonexml->load('https://raw.githubusercontent.com/unicode-org/cldr/main/common/supplemental/windowsZones.xml');
 $zones = $windowstimezonexml->getElementsByTagName('mapZone');
 foreach ($zones as $zone) {
 	if ($zone->getAttribute('territory') === '001') {
